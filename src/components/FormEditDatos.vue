@@ -348,7 +348,7 @@ export default {
 #ImgEdit{
     float: left;
     width: 40%;
-    margin-top: 20px;
+    margin-top: 10px;
     padding-right: 20px;
     padding-left: 50px;
     background-color: #f4f4f4;
@@ -357,14 +357,14 @@ export default {
 #DatEdit{
     float: right;
     width: 50%;
-    margin-top: 35px;
+    margin-top: 15px;
     padding-left: 20px;
     padding-right: 120px;
     background-color: #f4f4f4;
 }
 
 #ContPrincE{
-    height: 720px;
+    height: 660px;
     background-color: #f4f4f4;
 }
 

@@ -46,7 +46,7 @@ export default {
 
 #ContPrincA{
   background-color: #f4f4f4;
-  height: 730px;
+  height: 760px;
 }
 
 #fondo{

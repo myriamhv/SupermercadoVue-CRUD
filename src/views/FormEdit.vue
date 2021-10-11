@@ -55,15 +55,16 @@ export default {
 #ContTitle{
     background-color: #f4f4f4;
     align-items: left;
-    margin-top: 20px;
-    margin-bottom: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding-left: 10px;
     
 }
 
 #ContPrincA{
   background-color: #f4f4f4;
-  height: 760px;
+  height: 730px;
+  margin-top: -10px;
 }
 
 #fondo{
