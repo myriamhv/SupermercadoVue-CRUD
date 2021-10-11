@@ -44,16 +44,30 @@
     <div class="prueba">
       <v-app-bar color="#aed269" dark>
         <!-- Copyright -->
-        <div align="center">
-          © 2021 Copyright:
+        <div class="copy">
+          © 2021 Copyright
           <a class="text-dark" href="https://mdbootstrap.com/"
-            >CRUD asociados</a
-          >
+            >CRUD asociados</a>
         </div>
         <v-btn depressed @click="AboutUs" class="btnFondo" color="white" text>
-          <b>About Us</b>
+          <b class="us">About Us</b>
         </v-btn>
         <!-- Copyright -->
+        <div class="imgface btface">
+          <a href="https://www.facebook.com/" target="blank">
+            <img src="./assets/facebook.png" />
+          </a>
+        </div>
+        <div class="imginsta btsocial">
+          <a href="https://www.instagram.com/" target="blank">
+            <img src="./assets/instagram.png" />
+          </a>
+        </div>
+        <div class="imgtwitter btsocial">
+          <a href="https://twitter.com/" target="blank">
+            <img src="./assets/twitter.png" />
+          </a>
+        </div>
       </v-app-bar>
     </div>
     <!-- fin pie del sitio -->
@@ -81,5 +95,22 @@ v-main {
 }
 .btnFondo {
   background-color: #aed269;
+  margin-left: 400px;
+}
+
+.us {
+  text-decoration: underline;
+}
+
+.copy {
+  margin-left: 35px;
+}
+
+.btface {
+  margin-left: 520px;
+}
+
+.btsocial {
+  margin-left: 15px;
 }
 </style>

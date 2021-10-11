@@ -1,69 +1,72 @@
 <template>
   <div id="contImag">
     <div class="nombreProducto">
-    <h4>{{product.nombre}}</h4>
+      <h4>{{ product.nombre }}</h4>
     </div>
     <v-card id="contCard" class="mx-auto" max-width="400">
-      <v-img id="contImgn"
+      <v-img
+        id="contImgn"
         class="white--text align-end"
         height="200px"
         contain
-        v-bind:src="'imagenes_productos/'+product.imagen"
+        v-bind:src="'imagenes_productos/' + product.imagen"
       >
         <v-card-title>Producto</v-card-title>
       </v-img>
 
-
       <v-card-text class="text--primary">
         <div class="descripcion">
-          <b><span class="negrilla">Descripción: </span></b> {{product.descripcion}}
-          </div>
+          <b><span class="negrilla">Descripción: </span></b>
+          {{ product.descripcion }}
+        </div>
 
         <div class="peso">
-          <b><span class="negrilla">Peso Neto: </span></b> {{product.contNeto}}
+          <b><span class="negrilla">Peso Neto: </span></b>
+          {{ product.contNeto }}
         </div>
       </v-card-text>
 
-      <v-card-actions class= "cardActions">
+      <v-card-actions class="cardActions">
         <div class="botones">
-        <div class="btnEdit">
-        <v-btn color="white" class="btnFondo botonesFooter" @click="DirEdit(product._id)" text> <v-icon left>mdi-pencil</v-icon>Editar </v-btn>
-        </div>
-        <div class="btnDelete">
-        <v-btn color="white" class="btnFondo botonesFooter" @click="ActEliminar(product.codigo, product.nombre,product )" text> <v-icon left>mdi-delete</v-icon>Eliminar </v-btn>
-        </div>
+          <div class="btnEdit">
+            <v-btn
+              color="white"
+              class="btnFondo botonesFooter"
+              @click="DirEdit(product._id)"
+              text
+            >
+              <v-icon left>mdi-pencil</v-icon>Editar
+            </v-btn>
+          </div>
+          <div class="btnDelete">
+            <v-btn
+              color="white"
+              class="btnFondo botonesFooter"
+              @click="ActEliminar(product.codigo, product.nombre, product)"
+              text
+            >
+              <v-icon left>mdi-delete</v-icon>Eliminar
+            </v-btn>
+          </div>
         </div>
       </v-card-actions>
     </v-card>
-    <v-dialog
-      v-model="dialog"
-      max-width="480"
-    >
+    <v-dialog v-model="dialog" max-width="480">
       <v-card>
         <v-card-title class="text-h6">
           Está seguro que desea eliminar el producto?
         </v-card-title>
 
-        <v-card-text>
-          Eliminar el producto: {{this.NombProd}}
-        </v-card-text>
+        <v-card-text> Eliminar el producto: {{ this.NombProd }} </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
+          <v-btn color="green darken-1" text @click="dialog = false">
             Cancelar
           </v-btn>
 
-          <v-btn
-            color="green darken-1"
-            text
-            v-on:click="ConfirmEliminar"
-          >
+          <v-btn color="green darken-1" text v-on:click="ConfirmEliminar">
             Aceptar
           </v-btn>
         </v-card-actions>
@@ -77,39 +80,38 @@ import store from "../store/index.js";
 export default {
   props: ["product"],
   data: () => {
-      return {
-        dialog: false,
-        SelIdP: "",
-        NombProd: "",
-
-      }
+    return {
+      dialog: false,
+      SelIdP: "",
+      NombProd: "",
+    };
+  },
+  methods: {
+    DirEdit(idP) {
+      store.dispatch("putDatEdit", idP).then(() => {
+        this.$router.push("/editar");
+      });
     },
-    methods: {
-      DirEdit(idP){
-        store.dispatch('putDatEdit', idP).then(()=>{
-          this.$router.push('/editar');
-        });
-      },
-      ActEliminar(Pid, Pnombre, objTest){
-        this.dialog = true;
-        this.NombProd = Pnombre;
-        this.SelIdP = Pid;
-        this.objTest =  objTest;
-      },
-      ConfirmEliminar(){
-        const productoVO = [];
-            productoVO.push(this.SelIdP, this.objTest);
-            console.log("conf" + this.objTest);
-        store.dispatch('deleteProduct', productoVO).then(()=>{
-            //realiza solicitud get al backend
-            store.dispatch("getProductos");
-        });
-        this.dialog = false;
-      },
-      // deleteProduct(Pid){
-      //   store.dispatch("deleteProduct", Pid);
-      // }
-    }
+    ActEliminar(Pid, Pnombre, objTest) {
+      this.dialog = true;
+      this.NombProd = Pnombre;
+      this.SelIdP = Pid;
+      this.objTest = objTest;
+    },
+    ConfirmEliminar() {
+      const productoVO = [];
+      productoVO.push(this.SelIdP, this.objTest);
+      console.log("conf" + this.objTest);
+      store.dispatch("deleteProduct", productoVO).then(() => {
+        //realiza solicitud get al backend
+        store.dispatch("getProductos");
+      });
+      this.dialog = false;
+    },
+    // deleteProduct(Pid){
+    //   store.dispatch("deleteProduct", Pid);
+    // }
+  },
 };
 </script>
 
@@ -169,11 +171,11 @@ h1 {
   justify-content: left;
 }
 
-.nombreProducto{
+.nombreProducto {
   display: flex;
   justify-content: center;
 }
-.peso{
+.peso {
   padding-left: 2px;
 }
 
@@ -199,7 +201,7 @@ h1 {
   justify-content: center;
 }
 
-.negrilla{
+.negrilla {
   font-weight: bold;
   font-size: 1rem;
 }
