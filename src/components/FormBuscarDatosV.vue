@@ -41,7 +41,7 @@
             <v-btn
               color="white"
               class="btnFondo botonesFooter"
-              @click="ActEliminar(productB._id, productB.nombre)"
+              @click="ActEliminar(productB.codigo, productB.nombre, productB)"
               text
             >
               <v-icon left>mdi-delete</v-icon>Eliminar
@@ -91,14 +91,17 @@ export default {
         this.$router.push("/editar");
       });
     },
-    ActEliminar(Pid, Pnombre) {
+    ActEliminar(Pid, Pnombre, objTest) {
       this.dialog = true;
       this.NombProd = Pnombre;
       this.SelIdP = Pid;
+      this.objTest = objTest;
     },
     ConfirmEliminar() {
-      let obj = { id: this.SelIdP };
-      store.dispatch("eliminarProduct", obj).then(() => {
+      const productoVO = [];
+      productoVO.push(this.SelIdP, this.objTest);
+      console.log("conf" + this.objTest);
+      store.dispatch("deleteProduct", productoVO).then(() => {
         //realiza solicitud get al backend
         store.dispatch("getProductos");
       });
