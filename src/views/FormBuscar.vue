@@ -76,7 +76,7 @@ export default {
       productsB: [],
       Codigo: "",
       Tipo: "",
-      itemsTip: ["", "Lácteo", "Gaseosa", "Galleta", "Ponque"],
+      itemsTip: ["", "Lácteos", "Gaseosas y jugos", "Despensa"],
       Marca: "",
       itemsMarc: ["", "Alpina", "Alquería", "Coca-cola", "Bimbo", "Saltinas"],
       //reglas de form datos
