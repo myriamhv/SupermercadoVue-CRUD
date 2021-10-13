@@ -103,7 +103,7 @@ export default {
       console.log("conf" + this.objTest);
       store.dispatch("deleteProduct", productoVO).then(() => {
         //realiza solicitud get al backend
-        store.dispatch("getProductos");
+        this.$router.push("/home");
       });
       this.dialog = false;
     },
